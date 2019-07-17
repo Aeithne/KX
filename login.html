@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Login - KX - クラシックX</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/styleLOGIN.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Poiret+One|Quicksand&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 card text-center">
+                <div class="card-body">
+                    <form action="functions.php" method="post"> 
+                    <h5 class="card-title">LOGIN</h5>
+                            <!-- Email -->
+                        <input type="text" name="usuario" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Username">
+                            <!-- Password -->
+                        <input type="password" name="pass" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+
+                        <div class="d-flex justify-content-around">
+                            <div>
+                                <!-- Remember me -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                                    <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                                </div>
+                            </div>
+                            <div>
+                                <!-- Forgot password -->
+                                <a href="">Forgot password?</a>
+                            </div>
+                        </div>
+
+                        <!-- Sign in button -->
+                        <input type="text" name="acao" value="login" style="display:none">
+                        <button href="" class="btn btn-block my-4" type="submit">Login</button>
+                         
+                        <!-- Register -->
+                        <p>NOT A MEMBER? <br>
+                            <a href="register.html">REGISTER!</a>
+                        </p>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer">
+        <div class="footer-end text-end">
+            © KX - クラシックX
+        </div>
+    </div>
+</footer>
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+</body>
+
+</html>

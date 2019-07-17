@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Register - KX - クラシックX</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/styleREGISTER.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Poiret+One|Quicksand&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 card text-center">
+                <div class="card-body">
+                    <form action="functions.php" method="post">
+                    <h5 class="card-title">SIGN IN</h5>
+                     
+                    <div class="form-row mb-4">
+                        <div class="col">
+                            <!-- First name -->
+                            <input type="text" name="firstName" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
+                        </div>
+                        <div class="col">
+                            <!-- Last name -->
+                            <input type="text" name="lastName" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
+                        </div>
+                    </div>
+                            <!-- Usuário -->
+                        <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Username">    
+                            <!-- Email -->
+                        <input type="email" name="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+                            <!-- Password -->]
+                        <script>
+                            function compararSenhas() {
+                                var s1 = document.getElementById("defaultLoginFormPassword");
+                                var s2 = document.getElementById("defaultLoginFormPassword2");
+
+                                if (s1.value != s2.value) {
+                                    alert("As senhas são diferentes. Tente novamente.");
+                                }
+                            }
+                        </script>
+                        <input type="password" name="pass" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+                            <!-- Confirm Password -->
+                        <input type="password" name="pass2" id="defaultLoginFormPassword2" class="form-control mb-4" placeholder="Confirm Password" onchange="compararSenhas();">
+                            <!-- Country -->
+                        <select class="browser-default custom-select mb-4">
+                            <option value="" disabled>Now you choose your country</option>
+                            <option value="1" selected>Brazil</option>
+                            <option value="2">Japan</option>
+                            <option value="3">England</option>
+                            <option value="4">Russia</option>
+                        </select>
+                           <!-- Type -->
+                           <select name="tipo" class="browser-default custom-select mb-4">
+                            <option value="" disabled>And here you choose your account type</option>
+                            <option value="1" selected>FREE ACCOUNT</option>
+                            <option value="2">PREMIUM ACCOUNT</option>
+                        </select>
+
+                        <div class="d-flex justify-content-around">
+                            <div>
+                                <!-- Remember me -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                                    <label class="custom-control-label" for="defaultLoginFormRemember">Remember me pleeease!</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div>
+                                <!-- AD -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="defaultUpdates">
+                                    <label class="custom-control-label" for="defaultUpdates">Do you want recive updates <br> in your email? We swear will not send spam!</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sign in button -->
+                        <input type="text" name="acao" value="cadastro" style="display:none">
+                        <button class="btn btn-block my-4" type="submit">Sign in</button>
+                        
+                        <!-- Register -->
+                        <p>IS ALREADY A MEMBER? WHAT ARE YOU DOING HERE?
+                             <br>
+                            <a href="login.html">LOGIN!</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer">
+        <div class="footer-end text-end">
+            © KX - クラシックX
+        </div>
+    </div>
+</footer>
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+</body>
+
+</html>

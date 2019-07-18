@@ -20,8 +20,11 @@
         (isset($_POST['tipo'])) ? $tipo = $_POST['tipo'] : $tipo = null;
         (isset($_POST['country'])) ? $country = $_POST['country'] : $country = null;  
         (isset($_POST['erroCadastro'])) ? $erroCadastro = $_POST['erroCadastro'] : $erroCadastro = null;
-		(isset($_POST['erroLogin'])) ? $erroLogin = $_POST['erroLogin'] : $erroLogin = null;
-		(isset($_POST['mensagem'])) ? $mensagem = $_POST['mensagem'] : $mensagem = null;
+		  (isset($_POST['erroLogin'])) ? $erroLogin = $_POST['erroLogin'] : $erroLogin = null;
+		  (isset($_POST['mensagem'])) ? $mensagem = $_POST['mensagem'] : $mensagem = null;
+		  (isset($_POST['comentario'])) ? $comentario = $_POST['comentario'] : $comentario = null;
+		  (isset($_POST['video_id'])) ? $video_id = $_POST['video_id'] : $video_id = null;
+		
 		
 		//echo $acao;
 
@@ -31,10 +34,12 @@
 		$stmt->execute();
 		$resultado = $stmt->fetchObject();
  		if($resultado){
+ 			
 			$acao = "erro";
 			$erro = "Usuário já existe!";
+			
 		} else {
-			$nome = $firstName." ".$lastName;
+			$nome = $firstName . " " . $lastName;
 			$stmt = $conn->prepare("INSERT INTO usuario (nome, senha, email, nomeUsuario, tipo) VALUES (?, ?, ?, ?, ?)");
 			$stmt->bindParam(1, $nome);
 			$stmt->bindParam(2, $pass);
@@ -49,6 +54,41 @@
 			
 			$acao = "inicio";
 		}
+	}
+	
+	if($acao == "video") {
+		$stmt = $conn->prepare("SELECT titulo, url FROM video WHERE video_id = ? OR link = ?");
+			$stmt->bindParam(1, $video_id);
+			$stmt->bindParam(2, $video_link);
+			$stmt->execute();
+			
+		$resultado = $stmt->fetchObject();
+ 		if($resultado){
+ 			$_SESSION['link'] = $resultado->url;
+			$_SESSION['titulo'] = $resultado->titulo;
+			$comments = $conn->prepare("SELECT mensagem, usuario, datacriacao FROM comentario WHERE video_id = ? ORDER BY datacriacao");
+			$comments->bindParam(1, $video_id);
+			$comments->execute(); 
+			
+			$_SESSION['comentarios'] = array();
+			while ($res2 = $comments->fetchObject()) {
+				$_SESSION['comentarios'][] = array($res2->mensagem, $res2->usuario, $res2->datacriacao);
+			}
+						
+			
+		} else {
+			
+			$acao = "erro";
+			$erro = "Vídeo não encontrado!";
+		}
+		
+	}
+	
+	if($acao == "adicionarcomentario") {
+		$stmt = $conn->prepare("INSERT INTO comentario (mensagem, video_id, usuario, datacriacao) VALUES (?, ?, ?, now() )");
+			$stmt->bindParam(1, $comentario);
+			$stmt->bindParam(2, $video_id);
+			$stmt->bindParam(3, $username);
 	}
 
 	if($acao == "login"){
@@ -81,7 +121,7 @@
 	
 	if($acao == "erro"){
 
-		echo $erro;
+		$_SESSION['erro'] = $erro;
 	}
 
 

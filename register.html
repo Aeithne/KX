@@ -29,18 +29,18 @@
                     <div class="form-row mb-4">
                         <div class="col">
                             <!-- First name -->
-                            <input type="text" name="firstName" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
+                            <input type="text" required name="firstName" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
                         </div>
                         <div class="col">
                             <!-- Last name -->
-                            <input type="text" name="lastName" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
+                            <input type="text" required name="lastName" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
                         </div>
                     </div>
                             <!-- Usuário -->
-                        <input type="text" name="username" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Username">    
+                        <input type="text" required name="username" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Username">    
                             <!-- Email -->
-                        <input type="email" name="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
-                            <!-- Password -->]
+                        <input type="email" required name="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+                            <!-- Password -->
                         <script>
                             function compararSenhas() {
                                 var s1 = document.getElementById("defaultLoginFormPassword");
@@ -51,9 +51,9 @@
                                 }
                             }
                         </script>
-                        <input type="password" name="pass" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+                        <input type="password" required name="pass" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
                             <!-- Confirm Password -->
-                        <input type="password" name="pass2" id="defaultLoginFormPassword2" class="form-control mb-4" placeholder="Confirm Password" onchange="compararSenhas();">
+                        <input type="password" required name="pass2" id="defaultLoginFormPassword2" class="form-control mb-4" placeholder="Confirm Password" onchange="compararSenhas();">
                             <!-- Country -->
                         <select class="browser-default custom-select mb-4">
                             <option value="" disabled>Now you choose your country</option>
@@ -88,7 +88,7 @@
                         </div>
 
                         <!-- Sign in button -->
-                        <input type="text" name="acao" value="cadastro" style="display:none">
+                        <input type="text" required name="acao" value="cadastro" style="display:none">
                         <button class="btn btn-block my-4" type="submit">Sign in</button>
                         
                         <!-- Register -->

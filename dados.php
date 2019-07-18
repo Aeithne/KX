@@ -13,7 +13,7 @@
   <!-- Material Design Bootstrap -->
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
-  <link href="./css/style3.css" rel="stylesheet">
+  <link href="css/style2.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat|Poiret+One|Quicksand&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -53,14 +53,30 @@
     </table>
 </div>
 
-    <div class="col-8 filmes">
-            <div class="text-center welcome">
-              <h1>WELCOME!</h1>
-              <p>WE GLAD YOU ARE HERE! ENJOY!</p>
+    <?php
+    
+        session_start();
+
+        isset($_SESSION['nome']) ? $nomeUser = $_SESSION['nome'] : $nomeUser  = NULL;
+        isset($_SESSION['email']) ? $emailUser = $_SESSION['email'] : $emailUser  = NULL;
+        isset($_SESSION['tipo']) ? $tipoUser  = $_SESSION['tipo'] :$tipoUser   = NULL;
+        isset($_SESSION['user']) ? $userUser = $_SESSION['user'] : $userUser  = NULL;
+
+        #print_r($_SESSION);
+        
+        echo "<div class='col-8 filmes'>
+        <div class='text-center welcome'>
+          <h1>YOUR ACCOUNT</h1>
+                <div class='row'><div class='col-2'>Name:</div> <div class='col-6'>$nomeUser </div></div>
+                <div class='row'><div class='col-2'>Email:</div> <div class='col-6'>$emailUser </div></div>
+                <div class='row'><div class='col-2'>Type:</div> <div class='col-6'>$tipoUser </div></div>
+                <div class='row'><div class='col-2'>User:</div> <div class='col-6'>$userUser </div></div>
             </div>
+        </div>";
 
+    ?>
 
-    </div>
+    
   </div>
   
   <div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help"

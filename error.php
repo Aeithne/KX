@@ -55,7 +55,7 @@
                 <div class="container text-center">
                         <div class="row">
                             <div class="col">
-                                <label style="color:white"> ERROR: <?php echo $_SESSION['erro']; ?> </label>
+                                <label style="color:white"> ERROR: <?php session_start(); echo $_SESSION['erro']; ?> </label>
                             </div>
                         </div>
                 </div>

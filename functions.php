@@ -15,31 +15,31 @@
         (isset($_POST['lastName'])) ? $lastName = $_POST['lastName'] : $lastName = null;
         (isset($_POST['email'])) ? $email = $_POST['email'] : $email = null;
         (isset($_POST['username'])) ? $username = $_POST['username'] : $username = null;
-        (isset($_POST['pass'])) ? $pass = $_POST['pass'] : $pass = null;
+		(isset($_POST['pass'])) ? $pass = $_POST['pass'] : $pass = null;
+		(isset($_POST['pass2'])) ? $pass2 = $_POST['pass2'] : $pass2 = null;
         (isset($_POST['confirmaPassword'])) ? $confirmaPassword = $_POST['confirmaPassword'] : $confirmaPassword = null;
         (isset($_POST['tipo'])) ? $tipo = $_POST['tipo'] : $tipo = null;
         (isset($_POST['country'])) ? $country = $_POST['country'] : $country = null;  
         (isset($_POST['erroCadastro'])) ? $erroCadastro = $_POST['erroCadastro'] : $erroCadastro = null;
-		  (isset($_POST['erroLogin'])) ? $erroLogin = $_POST['erroLogin'] : $erroLogin = null;
-		  (isset($_POST['mensagem'])) ? $mensagem = $_POST['mensagem'] : $mensagem = null;
-		  (isset($_POST['comentario'])) ? $comentario = $_POST['comentario'] : $comentario = null;
-		  (isset($_POST['video_id'])) ? $video_id = $_POST['video_id'] : $video_id = null;
-		
+		(isset($_POST['erroLogin'])) ? $erroLogin = $_POST['erroLogin'] : $erroLogin = null;
+		(isset($_POST['mensagem'])) ? $mensagem = $_POST['mensagem'] : $mensagem = null;
 		
 		//echo $acao;
+		session_start();
 
-	if($acao == "cadastro"){
-
+	if($acao == "cadastro"){ 
+		if ($pass != $pass2) {
+			$acao = "erro";
+			$erro = "Senhas não coincidem!";
+		} else {
 		$stmt = $conn->prepare("SELECT * FROM usuario WHERE nomeUsuario = '$username' OR email = '$email' ");
 		$stmt->execute();
 		$resultado = $stmt->fetchObject();
  		if($resultado){
- 			
 			$acao = "erro";
 			$erro = "Usuário já existe!";
-			
 		} else {
-			$nome = $firstName . " " . $lastName;
+			$nome = $firstName." ".$lastName;
 			$stmt = $conn->prepare("INSERT INTO usuario (nome, senha, email, nomeUsuario, tipo) VALUES (?, ?, ?, ?, ?)");
 			$stmt->bindParam(1, $nome);
 			$stmt->bindParam(2, $pass);
@@ -55,44 +55,14 @@
 			$acao = "inicio";
 		}
 	}
-	
-	if($acao == "video") {
-		$stmt = $conn->prepare("SELECT titulo, url FROM video WHERE video_id = ? OR link = ?");
-			$stmt->bindParam(1, $video_id);
-			$stmt->bindParam(2, $video_link);
-			$stmt->execute();
-			
-		$resultado = $stmt->fetchObject();
- 		if($resultado){
- 			$_SESSION['link'] = $resultado->url;
-			$_SESSION['titulo'] = $resultado->titulo;
-			$comments = $conn->prepare("SELECT mensagem, usuario, datacriacao FROM comentario WHERE video_id = ? ORDER BY datacriacao");
-			$comments->bindParam(1, $video_id);
-			$comments->execute(); 
-			
-			$_SESSION['comentarios'] = array();
-			while ($res2 = $comments->fetchObject()) {
-				$_SESSION['comentarios'][] = array($res2->mensagem, $res2->usuario, $res2->datacriacao);
-			}
-						
-			
-		} else {
-			
-			$acao = "erro";
-			$erro = "Vídeo não encontrado!";
-		}
-		
-	}
-	
-	if($acao == "adicionarcomentario") {
-		$stmt = $conn->prepare("INSERT INTO comentario (mensagem, video_id, usuario, datacriacao) VALUES (?, ?, ?, now() )");
-			$stmt->bindParam(1, $comentario);
-			$stmt->bindParam(2, $video_id);
-			$stmt->bindParam(3, $username);
 	}
 
 	if($acao == "login"){
 
+		$usuarioquery = $conn->prepare("SELECT nomeUsuario FROM usuario WHERE nomeUsuario = '$usuario'");
+		$usuarioquery->execute();
+		$resultado = $usuarioquery->fetchObject();
+		if($resultado){
 		//$sql = ;  
 		$query = $conn->prepare("SELECT nome, senha, nomeUsuario FROM usuario WHERE nomeUsuario = '$usuario' AND senha = '$pass' ");
 		//$query->bindValue(1, $usuario);
@@ -103,7 +73,42 @@
 		$resultado = $query->fetchObject();
  		if($resultado){
 			$welcome = $resultado->nome;
-			$acao = "inicio"; 
+			$acao = "inicio";
+		 } else {
+			$acao = "erro";
+			$erro = "Senha Incorreta!";
+		 } 
+		} else {
+			$acao = "erro";
+			$erro = "Usuário não encontrado!";
+		}
+
+	}
+
+	if($acao == "exibir"){
+		//$sql = ;  
+		$userSearch = $_SESSION['loginUsuario'];
+		echo $userSearch;
+		$query2 = $conn->prepare("SELECT nome, tipo, nomeUsuario, email FROM usuario WHERE nomeUsuario = '$userSearch' ");
+		//$query->bindValue(1, $usuario);
+		//$query->bindValue(1, $senha);
+		$query2->execute();
+		//print_r($query);
+
+		$resultado2 = $query2->fetchObject();
+ 		if($resultado2){
+			if($resultado2->tipo == '1'){
+				$tipo = "Free Account";
+			}else{
+				$tipo = "PREMIUM Account";
+			}
+
+			$_SESSION['nome'] = $resultado2->nome;
+			$_SESSION['email'] = $resultado2->email;
+			$_SESSION['tipo'] = $tipo;
+			$_SESSION['user'] = $resultado2->nomeUsuario;
+			
+			header('Location: ./dados.php');
 		}else{
 			$acao = "erro";
 			$erro = "Usuário não encontrado!";
@@ -112,17 +117,26 @@
 	}
 
 	if($acao == "inicio"){
-
-		header('Location: ./welcome.html');
 		$_SESSION['loginUsuario'] = $usuario;
 		$_SESSION['nomeUsuario'] = $resultado->nome;
+		$_SESSION['nome'] = $resultado2->nome;
+		$_SESSION['email'] = $resultado2->email;
+		$_SESSION['tipo'] = $tipo;
+
+		header('Location: ./welcome.html');
+		
 		echo "Bem Vindo, $resultado->nome";
 	}
 	
 	if($acao == "erro"){
+		if($acao == "erro"){
+			$_SESSION['erro'] = $erro;
+		}
 
-		$_SESSION['erro'] = $erro;
+		header('Location: ./error.php');
 	}
+
+	
 
 
 

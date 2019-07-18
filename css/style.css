@@ -1,0 +1,81 @@
+.navbar-mermaid{
+    background-color:transparent;
+    font-size: 35px;
+    color: rgb(185, 157, 240);
+    padding: 1%;
+    z-index: 1000;
+}
+p{
+    font-family: 'Raleway', sans-serif;
+    color: rgb(163, 163, 163);
+}
+
+.view {
+    background: url("https://live.staticflickr.com/65535/48283037706_810cb43991_o.png")no-repeat center center;
+    background-size: cover;
+}
+@media (min-width: 768px) {
+    .view {
+        overflow: visible;
+    }
+}
+h4{
+    color: rgb(95, 95, 95);
+    font-family: 'Cinzel', serif;
+}
+h6{
+    font-family: 'Assistant', sans-serif;
+    font-style: italic;
+    color: rgb(165, 165, 165);
+}
+
+.navbar {
+    z-index: 1;
+}
+.navbar {
+    background-color: transparent;
+}
+.top-nav-collapse {
+    background-color: rgba(243, 243, 243, 0.897);
+}
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: rgba(243, 243, 243, 0.897);
+    }
+}
+
+html,
+body,
+header,
+.view {
+  height: 100%;
+}
+
+.pprodutos{
+    background-color: rgb(243, 243, 243);
+}
+p{
+    font-size: 18px;
+    color: rgb(148, 148, 148);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.row{
+    margin-left: 70px;
+    margin-top: 20px;
+}
+
+
+footer {
+    position: absolute;
+    top: 88%;
+    width: 100%;
+    background-color:rgb(10, 5, 35);
+    margin-top: 1px;
+}
+a{
+    font-size: 39px;
+    font-family: 'Poiret One', cursive;
+    color: rgb(84, 57, 100);
+    padding-bottom: 5px;
+}

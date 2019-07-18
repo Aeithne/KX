@@ -1,0 +1,116 @@
+.navbar-mermaid{
+    background-color:rgba(241, 241, 241, 0.911);
+    font-size: 35px;
+    color: rgb(185, 157, 240);
+    font-family: 'Cinzel Decorative', cursive;
+    padding: 1%;
+}
+h2{
+    color: rgb(224, 179, 255);
+    font-family: 'Assistant',sans-serif;
+    font-size: 20px;
+}
+p{
+    color: rgb(148, 148, 148);
+    font-family: 'Assistant',sans-serif;
+}
+.intro-produtos{
+    background-color: rgba(241, 241, 241, 0.911);
+}
+.intro-title{
+    color: rgb(185, 157, 240);
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 35px;
+    padding-top: 2pc;
+}
+.descriptionp{
+    margin-right: 75px;
+
+}
+.pprodutos{
+    background-color: rgba(241, 241, 241, 0.911);
+}
+
+.row{
+    margin-top: 20px;
+}
+.border{
+    margin-bottom: 2%;
+    border: 2px;
+}
+.botoes{
+    background-color: rgba(241, 241, 241, 0.911);
+    color:rgb(150, 109, 233);
+    font-size: 13px;
+    padding-bottom: 25px;
+
+}
+
+
+.futer{
+    background-color: rgba(232, 227, 238, 0.747);
+    border-top: 1px;
+    border-style: solid;
+    border-width: 1px;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    border-color: rgb(235, 235, 235);
+    padding-top: 10px;
+
+}
+.footer-title{
+    color: rgb(150, 109, 233);
+    font-size: 20px;
+    font-family: 'Cinzel', serif;
+}
+.avatar-footer{
+    width: 80px;
+    height: 80px;
+}
+h1{
+    font-family: 'Assistant', sans-serif;
+    font-size: 15px;
+    color: rgb(134, 134, 134);
+    padding-top: 5px;
+}
+h2{
+    font-family: 'Assistant', sans-serif;
+    font-size: 10px;
+    color: rgb(134, 134, 134);
+}
+.footer-end{
+    font-size: 18px;
+    font-family: 'Cinzel', serif;
+    color: rgb(148, 148, 148);
+    padding-bottom: 5px;
+}
+.btn-mermaid {
+    background-color: rgb(185, 157, 240)!important;
+    color: white; 
+}
+.mermaid-overlay {
+    position: absolute;
+    opacity: 0;
+}
+.mermaid-container-overlay:hover .mermaid-overlay {
+    opacity: 1;
+    transition: 865ms;
+}
+.modal-content{
+    background-color: rgb(240, 240, 240);
+}
+.modal-title{
+    color: rgb(122, 91, 184);
+    font-family: 'Cinzel', serif;
+}
+.price{
+    color: rgb(7, 7, 7);
+    font-family: 'Assistant', sans-serif;
+    font-size: 20px;
+    text-align: end; margin-right: 5%;
+}
+.button-modal{
+    background-color:rgb(185, 157, 240)!important;
+ 
+}

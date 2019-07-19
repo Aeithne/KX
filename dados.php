@@ -13,71 +13,135 @@
   <!-- Material Design Bootstrap -->
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
-  <link href="css/style2.css" rel="stylesheet">
+  <link href="./css/style3.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat|Poiret+One|Quicksand&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!--Inicio do side-->
+    <div class="container-fluid">
+      <div class="row">
+          <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+              <div class="sidebar-sticky">
+                  <img src="https://66.media.tumblr.com/c2e924b17e951a709c0061c8db6378f2/tumblr_put8w1rFi81vivwuao1_r1_100.png" class="avatar rounded">
+                  <ul class="nav flex-column">
+                      <li class="nav-item">
+                          <a class="nav-link active" href="welcome.html">
+                              <span data-feather="home"></span>
+                              <i class="fas fa-home mr-2 black-text" aria-hidden="true"></i>  Home <span class="sr-only">(current)</span>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#profile" data-toggle="modal" data-target="#profile">
+                              <span data-feather="file"></span>
+                              <i class="fas fa-users mr-2 black-text" aria-hidden="true"></i> Profiles
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="filmes.html">
+                              <span data-feather="file"></span>
+                              <i class="fas fa-video mr-2 black-text" aria-hidden="true"></i> Movies
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="indies.html">
+                              <span data-feather="file"></span>
+                              <i class="fas fa-film mr-2 black-text" aria-hidden="true"></i> Indies
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="functions.php?acao=exibir">
+                              <span data-feather="file"></span>
+                              <i class="fas fa-user-circle mr-2 black-text" aria-hidden="true"></i> Account
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#help" data-toggle="modal" data-target="#help">
+                              <span data-feather="file"></span>
+                              <i class="fas fa-question-circle mr-2 black-text" aria-hidden="true"></i> Help
+                          </a>
+                      </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="KX-PAGINAINICIAL.html">
+                              <span data-feather="file"></span>
+                              <i class="fas fa-door-open mr-2 black-text" aria-hidden="true"></i> Logout
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </nav>
+      </div>    
+  </div>
+  <!--Fim do side-->
+  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <!--Todo conteudo do site deve ficar dentro do content main, ok malu-->
 
-  <div class="row ">
-    <div class="col-2 menu ">
-      <img src="https://66.media.tumblr.com/c2e924b17e951a709c0061c8db6378f2/tumblr_put8w1rFi81vivwuao1_r1_100.png" class="avatar rounded">
+      <?php
+    
+      session_start();
 
-      <!-- Table  -->
-    <table class="table">
-      <thead>
-        <tr>
-          <th><i class="fas fa-home mr-2 black-text" aria-hidden="true"></i><a href="welcome.html">Home</a> </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><i class="fas fa-users mr-2 black-text" aria-hidden="true"></i>Profiles</td>
-        </tr>
-        <tr>
-          <td><i class="fas fa-video mr-2 black-text" aria-hidden="true"></i><a href="filmes.html">Movies</a></td>
-        </tr>
-        <tr>
-          <td><i class="fas fa-film mr-2 black-text" aria-hidden="true"></i><a href="indie.html">Indies</a></td>
-        </tr>
-        <tr>
-          <td><i class="fas fa-user-circle mr-2 black-text" aria-hidden="true"></i><a href="functions.php?acao=exibir">Account</a></td>
-        </tr>
-        <tr>
-          <td><i class="fas fa-question-circle mr-2 black-text" aria-hidden="true"></i><a href="#help" data-toggle="modal" data-target="#help">Help</a></td>
-        </tr>
-        <tr>
-          <td><i class="fas fa-door-open mr-2 black-text" aria-hidden="true"></i><a href="KX-PAGINAINICIAL.html">Logoff</a></td>
-        </tr>
-      </tbody>
-      <!-- Table body -->
-    </table>
+      isset($_SESSION['nome']) ? $nomeUser = $_SESSION['nome'] : $nomeUser  = NULL;
+      isset($_SESSION['email']) ? $emailUser = $_SESSION['email'] : $emailUser  = NULL;
+      isset($_SESSION['tipo']) ? $tipoUser  = $_SESSION['tipo'] :$tipoUser   = NULL;
+      isset($_SESSION['user']) ? $userUser = $_SESSION['user'] : $userUser  = NULL;
+
+      #print_r($_SESSION);
+      
+      echo "<div class='col-8 filmes'>
+      <div class='text-center welcome'>
+        <h1>YOUR ACCOUNT</h1>
+              <div class='row'><div class='col-2'>Name:</div> <div class='col-6'>$nomeUser </div></div>
+              <div class='row'><div class='col-2'>Email:</div> <div class='col-6'>$emailUser </div></div>
+              <div class='row'><div class='col-2'>Type:</div> <div class='col-6'>$tipoUser </div></div>
+              <div class='row'><div class='col-2'>User:</div> <div class='col-6'>$userUser </div></div>
+          </div>
+      </div>";
+
+  ?> 
+  </main>
+
+  <div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="profile"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Profiles</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3 modal-text">
+        <div class="md-form mb-5">
+          <div class="container">
+            <div class="row" >
+          
+              <!-- PESSOA 1 -->
+              <div class="col-md-4 border border-top-0 border-bottom-0">
+                <img src="https://www.viawater.nl/files/default-user.png" class="img-fluid rounded avatar-footer" alt="placeholder">
+                <h6>Profile #1</h6>
+              </div>
+    
+              <!-- PESSOA 2 -->
+              <div class="col-md-4 border border-top-0 border-bottom-0">
+                <img src="https://www.viawater.nl/files/default-user.png" class="img-fluid rounded avatar-footer" alt="placeholder">
+                <h6>Profile #2</h6>
+              </div>
+    
+              <!-- PESSOA 3 -->
+              <div class="col-md-4 border border-top-0 border-bottom-0">
+                  <img src="https://www.viawater.nl/files/default-user.png" class="img-fluid rounded avatar-footer" alt="placeholder">
+                  <h6>Profile #3</h6>
+                </div>
+            </div>
+        </div>
+        </div>
+
+          
+      </div>
+
+    </div>
+  </div>
 </div>
 
-    <?php
-    
-        session_start();
-
-        isset($_SESSION['nome']) ? $nomeUser = $_SESSION['nome'] : $nomeUser  = NULL;
-        isset($_SESSION['email']) ? $emailUser = $_SESSION['email'] : $emailUser  = NULL;
-        isset($_SESSION['tipo']) ? $tipoUser  = $_SESSION['tipo'] :$tipoUser   = NULL;
-        isset($_SESSION['user']) ? $userUser = $_SESSION['user'] : $userUser  = NULL;
-
-        #print_r($_SESSION);
-        
-        echo "<div class='col-8 filmes'>
-        <div class='text-center welcome'>
-          <h1>YOUR ACCOUNT</h1>
-                <div class='row'><div class='col-2'>Name:</div> <div class='col-6'>$nomeUser </div></div>
-                <div class='row'><div class='col-2'>Email:</div> <div class='col-6'>$emailUser </div></div>
-                <div class='row'><div class='col-2'>Type:</div> <div class='col-6'>$tipoUser </div></div>
-                <div class='row'><div class='col-2'>User:</div> <div class='col-6'>$userUser </div></div>
-            </div>
-        </div>";
-
-    ?>
-
-    
-  </div>
   
   <div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="help"
   aria-hidden="true">
@@ -135,7 +199,7 @@
 
     </div>
   </div>
-</div>
+  </div>
 
       
   <footer>
@@ -144,7 +208,7 @@
             © KX - クラシックX
         </div>
     </div>
-</footer>
+  </footer>
 
   <!-- SCRIPTS -->
   <!-- JQuery -->
@@ -156,4 +220,4 @@
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
 </body>
-</html>        
+</html>     
